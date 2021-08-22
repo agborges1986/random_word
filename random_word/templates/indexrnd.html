@@ -1,0 +1,26 @@
+{% extends 'basernd.html' %}
+
+
+{% block form %}
+    <div class="container">
+        <h1>Palabra Aleatoria</h1>
+        <br>
+        <h3>Intento # {{request.session.count}}</h3>
+        <br>
+        <form action='/random_word/random/' method='post'>
+    {% csrf_token %}
+        <div class="palabra">
+            <h1>{{request.session.word}}</h1>
+        </div>
+        <br>
+        <hr>
+        <div class="form-group">
+            <button class="btn btn-primary" type='submit'>Generar Palabra</button>
+        </div>
+        <br>
+        <div><a class="btn btn-danger" href="{%url 'clear'%}">Reiniciar</a></div>
+    </div>
+    </form>
+{% endblock form %}
+{% block info %}{% endblock info %}
+
